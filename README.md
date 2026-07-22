@@ -102,8 +102,8 @@ python Assignment-3.py
 ## 👤 Author
 
 **MP Online Internship Participant**  
-*Batch: [Your Batch Number]*  
-*Registration: [Your Registration Number]*
+*Batch: 1A*  
+*Registration: IN26011857*
 
 ---
 
