@@ -1,0 +1,15 @@
+Key Findings: The Logistic Regression model achieves 79.5% accuracy in predicting customer churn, 
+with a recall of 54.3% for the churn class. The model identifies 54% of actual churners, 
+which is critical for retention campaigns. The F1-score of 62.8% indicates a reasonable 
+balance between precision (74.4%) and recall.
+
+Factors Influencing Churn: The strongest predictors are contract type (month-to-month 
+contracts increase churn probability), tenure (newer customers churn more), monthly charges 
+(higher charges correlate with churn), and lack of online security/tech support services. 
+Customers with fiber optic internet and no partner/dependents also show higher churn rates.
+
+Limitation: Logistic Regression assumes a linear decision boundary between classes. 
+Customer churn behavior likely involves complex non-linear interactions (e.g., tenure × 
+contract type × service bundles) that a linear model cannot capture. Tree-based ensembles 
+(Random Forest, XGBoost) or neural networks would better model these interactions, 
+potentially improving recall for the minority churn class.
