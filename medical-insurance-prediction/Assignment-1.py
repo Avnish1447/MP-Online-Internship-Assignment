@@ -8,7 +8,19 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # Task 1: Data Understanding
 print("--- Task 1: Data Understanding ---")
 # Load the dataset
-df = pd.read_csv('insurance.csv')
+import os
+import urllib.request
+
+dataset_file = 'insurance.csv'
+if not os.path.exists(dataset_file):
+    print(f"Downloading {dataset_file}...")
+    dataset_url = 'https://raw.githubusercontent.com/stedy/Machine-Learning-with-R-datasets/master/insurance.csv'
+    try:
+        urllib.request.urlretrieve(dataset_url, dataset_file)
+    except Exception as e:
+        print(f"Failed to download: {e}")
+
+df = pd.read_csv(dataset_file)
 
 # Display the first five records
 print("First five records:")
