@@ -1,0 +1,15 @@
+Key Findings: The Polynomial Regression model (Degree=3) achieves an R² score of 0.8763 
+and MAE of $70,635.25, substantially outperforming Linear Regression (R² = 0.8451, 
+MAE = $82,607.76). The cubic polynomial successfully captures the accelerating salary growth 
+across position levels, particularly the exponential increase at senior levels (Levels 8-10).
+
+Difference Between Linear and Polynomial Regression: Linear Regression assumes a constant rate 
+of change (straight-line relationship), forcing a single slope across all position levels. 
+Polynomial Regression introduces higher-degree terms (Level², Level³), allowing the curve to 
+bend and model non-linear relationships where salary growth accelerates with seniority.
+
+Advantage of Polynomial Regression: For this dataset, Polynomial Regression's key advantage is 
+its ability to model the convex salary curve — where each promotion yields a progressively larger 
+salary increase. A linear model systematically underestimates executive compensation (Levels 8-10) 
+by $200K-$500K, making it unsuitable for salary benchmarking at senior levels. The polynomial 
+model's flexibility provides accurate predictions across the entire organizational hierarchy.

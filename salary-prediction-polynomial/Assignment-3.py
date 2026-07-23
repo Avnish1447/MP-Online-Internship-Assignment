@@ -15,24 +15,31 @@ print("TASK 1: DATA UNDERSTANDING")
 print("=" * 60)
 
 # Load the dataset
-if os.path.exists('Position_Salaries.csv'):
-    df = pd.read_csv('Position_Salaries.csv')
-else:
-    # Download from GitHub raw URL (Kaggle dataset mirror)
-    url = 'https://raw.githubusercontent.com/akram24/position-salaries/main/Position_Salaries.csv'
+import urllib.request
+
+dataset_file = 'Position_Salaries.csv'
+dataset_url = 'https://raw.githubusercontent.com/akram24/position-salaries/main/Position_Salaries.csv'
+
+if not os.path.exists(dataset_file):
+    print(f"Downloading {dataset_file}...")
     try:
-        df = pd.read_csv(url)
-    except:
-        # Create synthetic data matching the known dataset
-        data = {
-            'Position': ['Business Analyst', 'Junior Consultant', 'Senior Consultant', 'Manager', 
-                        'Country Manager', 'Region Manager', 'Partner', 'Senior Partner', 
-                        'C-level', 'CEO'],
-            'Level': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            'Salary': [45000, 50000, 60000, 80000, 110000, 150000, 200000, 300000, 500000, 1000000]
-        }
-        df = pd.DataFrame(data)
-        print("Using synthetic Position Salaries dataset")
+        urllib.request.urlretrieve(dataset_url, dataset_file)
+    except Exception as e:
+        print(f"Failed to download: {e}")
+
+if os.path.exists(dataset_file):
+    df = pd.read_csv(dataset_file)
+else:
+    # Create synthetic data matching the known dataset
+    data = {
+        'Position': ['Business Analyst', 'Junior Consultant', 'Senior Consultant', 'Manager', 
+                    'Country Manager', 'Region Manager', 'Partner', 'Senior Partner', 
+                    'C-level', 'CEO'],
+        'Level': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        'Salary': [45000, 50000, 60000, 80000, 110000, 150000, 200000, 300000, 500000, 1000000]
+    }
+    df = pd.DataFrame(data)
+    print("Using synthetic Position Salaries dataset")
 
 # Display first five records
 print("\nFirst 5 records:")
