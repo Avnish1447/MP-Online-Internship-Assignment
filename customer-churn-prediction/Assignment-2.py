@@ -14,11 +14,19 @@ print("=" * 60)
 
 # Load the dataset - use local file if available, otherwise download
 import os
-if os.path.exists('WA_Fn-UseC_-Telco-Customer-Churn.csv'):
-    df = pd.read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
-else:
-    # Use a reliable mirror URL
-    df = pd.read_csv('https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv')
+import urllib.request
+
+dataset_file = 'WA_Fn-UseC_-Telco-Customer-Churn.csv'
+dataset_url = 'https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv'
+
+if not os.path.exists(dataset_file):
+    print(f"Downloading {dataset_file}...")
+    try:
+        urllib.request.urlretrieve(dataset_url, dataset_file)
+    except Exception as e:
+        print(f"Failed to download: {e}")
+
+df = pd.read_csv(dataset_file)
 
 # Display first five records
 print("\nFirst 5 records:")
