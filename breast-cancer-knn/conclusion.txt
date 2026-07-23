@@ -1,0 +1,14 @@
+Conclusion:
+The KNN classifier effectively distinguishes malignant from benign breast tumors, achieving 
+95.6% accuracy with 90.5% recall on the test set. The model correctly 
+identifies 38/42 malignant cases, which is crucial for clinical applications 
+where false negatives (missed cancer) carry severe consequences. Feature scaling via 
+StandardScaler is fundamental for KNN since the algorithm relies on Euclidean distance; 
+without normalization, features with larger ranges (e.g., worst perimeter ~188) would 
+disproportionately influence neighbor selection compared to smaller-scale features (e.g., 
+smoothness ~0.1). The optimal K=5 balances bias-variance tradeoff better than the 
+default K=5. A key limitation of KNN is its computational inefficiency at scale - it requires 
+storing the entire training dataset and computing distances to all points during prediction, 
+making it slow for large datasets. Additionally, KNN is sensitive to irrelevant features and 
+the curse of dimensionality, which can degrade performance in high-dimensional spaces without 
+feature selection.
